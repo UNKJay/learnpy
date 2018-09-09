@@ -1,19 +1,22 @@
-from enum import Enum,unique
+def fact(n):
+    '''
+    Calculate 1*2*...*n
 
-@unique
-class Gender(Enum):
-    Male = 0
-    Female = 1
+    >>> fact(1)
+    1
+    >>> fact(10)
+    3628800
+    >>> fact(-1)
+    Traceback (most recent call last):
+    ...
+    ValueError
+    '''
+    if n < 1:
+        raise ValueError()
+    if n == 1:
+        return 1
+    return n * fact(n - 1)
 
-class Student(object):
-    def __init__(self, name, gender):
-        self.name = name
-        self.gender = gender
-
-
-# 测试:
-bart = Student('Bart', Gender.Male)
-if bart.gender == Gender.Male:
-    print('测试通过!')
-else:
-    print('测试失败!')
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
