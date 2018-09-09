@@ -1,30 +1,19 @@
-#/usr/bin/env python3
-#-*- coding: utf-8 -*-
+from enum import Enum,unique
 
-'homework'
-
-__author__='KJay_P'
+@unique
+class Gender(Enum):
+    Male = 0
+    Female = 1
 
 class Student(object):
-    count=0
-    def __init__(self,name):
-        self.name=name
-        Student.count+=1
+    def __init__(self, name, gender):
+        self.name = name
+        self.gender = gender
 
-def main():
-    if Student.count != 0:
-        print('测试失败!')
-    else:
-        bart = Student('Bart')
-    if Student.count != 1:
-        print('测试失败!')
-    else:
-        lisa = Student('Bart')
-        if Student.count != 2:
-            print('测试失败!')
-        else:
-            print('Students:', Student.count)
-            print('测试通过!')
- 
-if __name__=='__main__':
-    main()
+
+# 测试:
+bart = Student('Bart', Gender.Male)
+if bart.gender == Gender.Male:
+    print('测试通过!')
+else:
+    print('测试失败!')
